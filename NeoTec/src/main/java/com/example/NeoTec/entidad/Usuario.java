@@ -16,6 +16,9 @@ public class Usuario {
     @Column(name = "password", nullable = false, length = 255)
     private String password;
 
+    @Column(name = "rol", nullable = false, length = 20) // 👈 nuevo campo
+    private String rol;
+
     // Getters y Setters
     public Long getId() {
         return id;
@@ -39,5 +42,13 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }

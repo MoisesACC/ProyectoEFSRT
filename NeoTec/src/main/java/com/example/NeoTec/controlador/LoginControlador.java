@@ -24,16 +24,21 @@ public class LoginControlador {
 
     @PostMapping("/login")
     public String procesarLogin(@RequestParam("usuario") String usuario,
-                                 @RequestParam("password") String password,
-                                 HttpSession session,
-                                 Model model) {
+                                @RequestParam("password") String password,
+                                HttpSession session,
+                                Model model) {
         Usuario usuarioValidado = usuarioServicio.validarUsuario(usuario, password);
+
         if (usuarioValidado != null) {
             session.setAttribute("usuarioLogueado", usuarioValidado);
-            return "redirect:/inicio"; // Redirigir al index
+
+            // 👉 Establecer si es administrador
+            session.setAttribute("esAdmin", "ADMIN".equalsIgnoreCase(usuarioValidado.getRol()));
+
+            return "redirect:/inicio";
         } else {
             model.addAttribute("error", "Usuario o contraseña incorrectos");
-            return "login"; // Regresar al login con mensaje de error
+            return "login";
         }
     }
 
@@ -42,7 +47,4 @@ public class LoginControlador {
         session.invalidate();
         return "redirect:/inicio";
     }
-    
-    
-
 }
