@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoTec Systems - Tech Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+
+    :root {
+        /* Primary Colors */
+        --primary: #0d6efd;
+        --primary-dark: #0a58ca;
+        --primary-light: #6ea8fe;
+
+        /* Secondary/Accent Colors */
+        --secondary: #6c757d;
+        --accent: #20c997;
+        --accent-dark: #12ab7c;
+
+        /* Neutral Colors */
+        --dark: #212529;
+        --gray-dark: #343a40;
+        --gray: #6c757d;
+        --gray-light: #adb5bd;
+        --light: #f8f9fa;
+
+        /* Status Colors */
+        --success: #198754;
+        --info: #0dcaf0;
+        --warning: #ffc107;
+        --danger: #dc3545;
+
+        /* Typography */
+        --font-primary: 'Poppins', sans-serif;
+        --font-size-base: 1rem;
+        --line-height-base: 1.5;
+
+        /* Spacing */
+        --spacing-xs: 0.25rem;
+        /* 4px */
+        --spacing-sm: 0.5rem;
+        /* 8px */
+        --spacing-md: 1rem;
+        /* 16px */
+        --spacing-lg: 1.5rem;
+        /* 24px */
+        --spacing-xl: 2rem;
+        /* 32px */
+
+        /* Borders */
+        --border-radius-sm: 0.25rem;
+        --border-radius: 0.5rem;
+        --border-radius-lg: 1rem;
+
+        /* Shadows */
+        --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+
+        /* Transitions */
+        --transition-base: all 0.3s ease;
+        --transition-fast: all 0.15s ease;
+        --transition-slow: all 0.5s ease;
+    }
+
+    body {
+        font-family: var(--font-primary);
+        line-height: var(--line-height-base);
+        color: var(--dark);
+        background-color: #f5f7fa;
+        overflow-x: hidden;
+    }
+
+    a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: var(--transition-base);
+    }
+
+    a:hover {
+        color: var(--primary-dark);
+    }
+
+    /* ====== HEADER STYLES ====== */
+    .logo-bar {
+        background-color: white;
+        box-shadow: var(--shadow-sm);
+        padding: var(--spacing-sm) 0;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    .logo-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: var(--spacing-sm);
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin: 0;
+    }
+
+    .logo-text span {
+        color: var(--dark);
+        font-weight: 500;
+    }
+
+    .welcome-message p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--gray);
+    }
+
+    .user-name {
+        color: var(--primary);
+        font-weight: 600;
+    }
+
+    .welcome-message-mobile {
+        font-size: 0.8rem;
+        margin: 0;
+    }
+
+    .quick-actions {
+        display: flex;
+        gap: var(--spacing-md);
+    }
+
+    .action-icon {
+        color: var(--gray-dark);
+        font-size: 1.25rem;
+        transition: var(--transition-base);
+    }
+
+    .action-icon:hover {
+        color: var(--primary);
+        transform: translateY(-2px);
+    }
+
+    /* Navbar Styles */
+    .navbar {
+        background-color: var(--primary);
+        padding: 0;
+    }
+
+    .navbar-nav .nav-link {
+        color: rgba(255, 255, 255, 0.85);
+        padding: 1rem 1.25rem;
+        font-weight: 500;
+        transition: var(--transition-base);
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link:focus,
+    .navbar-nav .nav-link.active {
+        color: white;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-toggler {
+        color: white;
+        border: none;
+        padding: 0.5rem;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+    /* ====== HERO CAROUSEL ====== */
+    .hero-section {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .carousel-item {
+        height: 400px;
+        position: relative;
+    }
+
+    .carousel-item img {
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.7);
+    }
+
+    .carousel-caption {
+        bottom: 20%;
+        text-align: left;
+        max-width: 600px;
+        padding: var(--spacing-lg);
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(5px);
+        border-radius: var(--border-radius);
+    }
+
+    .carousel-caption h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .carousel-caption p {
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .carousel-indicators button {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 0 5px;
+    }
+
+    /* ====== CATEGORY NAVIGATION ====== */
+    .category-nav {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .category-wrapper {
+        display: flex;
+        justify-content: space-between;
+        overflow-x: auto;
+        padding: var(--spacing-md) 0;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .category-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .category-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--gray-dark);
+        text-decoration: none;
+        min-width: 80px;
+        padding: var(--spacing-sm);
+        border-radius: var(--border-radius);
+        transition: var(--transition-base);
+    }
+
+    .category-item i {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-xs);
+        color: var(--primary);
+    }
+
+    .category-item span {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    .category-item:hover {
+        transform: translateY(-5px);
+        color: var(--primary);
+        background-color: rgba(13, 110, 253, 0.05);
+    }
+
+    /* ====== SECTION HEADERS ====== */
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-lg);
+        border-bottom: 1px solid var(--gray-light);
+        padding-bottom: var(--spacing-sm);
+    }
+
+    .section-header h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin: 0;
+        position: relative;
+    }
+
+    .section-header h2::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--primary);
+    }
+
+    .view-all {
+        color: var(--primary);
+        font-weight: 500;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .view-all i {
+        margin-left: var(--spacing-xs);
+        transition: var(--transition-base);
+    }
+
+    .view-all:hover i {
+        transform: translateX(3px);
+    }
+
+    /* ====== PRODUCT CARDS ====== */
+    .products-section {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .product-card {
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-sm);
+        overflow: hidden;
+        position: relative;
+        transition: var(--transition-base);
+        height: 100%;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow);
+    }
+
+    .product-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: var(--primary);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        z-index: 1;
+    }
+
+    .product-badge.bg-success {
+        background-color: var(--success) !important;
+    }
+
+    .product-badge.bg-warning {
+        background-color: var(--warning) !important;
+        color: var(--dark);
+    }
+
+    .product-image {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: var(--transition-base);
+    }
+
+    .product-card:hover .product-image img {
+        transform: scale(1.05);
+    }
+
+    .product-actions {
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+        background-color: rgba(255, 255, 255, 0.9);
+        transition: var(--transition-base);
+    }
+
+    .product-card:hover .product-actions {
+        bottom: 0;
+    }
+
+    .btn-action {
+        background-color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray-dark);
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition-fast);
+    }
+
+    .btn-action:hover {
+        background-color: var(--primary);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .product-info {
+        padding: var(--spacing-md);
+    }
+
+    .product-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: var(--spacing-xs);
+        line-height: 1.3;
+        height: 2.6rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .product-description {
+        color: var(--gray);
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-sm);
+        height: 2.7rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .product-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .product-price {
+        font-weight: 700;
+        color: var(--primary);
+        font-size: 1.1rem;
+        margin: 0;
+    }
+
+    .product-stock {
+        font-size: 0.8rem;
+        color: var(--gray);
+        margin: 0;
+    }
+
+    /* ====== FEATURED CATEGORIES ====== */
+    .featured-categories {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .category-banner {
+        position: relative;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        height: 100%;
+    }
+
+    .category-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition-base);
+    }
+
+    .category-banner:hover img {
+        transform: scale(1.05);
+        filter: brightness(0.8);
+    }
+
+    .category-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: var(--spacing-md);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+        color: white;
+    }
+
+    .category-banner.large {
+        height: 400px;
+    }
+
+    .category-banner.medium {
+        height: 200px;
+    }
+
+    .category-banner.small {
+        height: 175px;
+    }
+
+    .category-banner.large .category-content {
+        padding: var(--spacing-lg);
+    }
+
+    .category-content h3,
+    .category-content h4 {
+        margin-bottom: var(--spacing-xs);
+        font-weight: 600;
+    }
+
+    .category-content p {
+        margin-bottom: var(--spacing-sm);
+        font-size: 0.9rem;
+        opacity: 0.9;
+    }
+
+    /* ====== NEWSLETTER ====== */
+    .newsletter-section {
+        margin: var(--spacing-xl) 0;
+    }
+
+    .newsletter-container {
+        background-color: var(--primary);
+        color: white;
+        border-radius: var(--border-radius);
+        padding: var(--spacing-xl);
+        box-shadow: var(--shadow);
+    }
+
+    .newsletter-container h3 {
+        font-weight: 600;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .newsletter-container p {
+        opacity: 0.9;
+        margin-bottom: 0;
+    }
+
+    .newsletter-form {
+        margin-top: var(--spacing-md);
+    }
+
+    .newsletter-form .form-control {
+        padding: 0.75rem 1.25rem;
+        border: none;
+    }
+
+    .newsletter-form .btn {
+        padding: 0.75rem 1.5rem;
+        background-color: var(--dark);
+        border-color: var(--dark);
+    }
+
+    .newsletter-form .btn:hover {
+        background-color: var(--gray-dark);
+    }
+
+    /* ====== BACK TO TOP BUTTON ====== */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition-base);
+        z-index: 100;
+    }
+
+    .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .back-to-top:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-3px);
+    }
+
+    /* ====== MEDIA QUERIES ====== */
+    @media (max-width: 991.98px) {
+        .carousel-item {
+            height: 350px;
+        }
+
+        .carousel-caption {
+            bottom: 10%;
+            max-width: 500px;
+        }
+
+        .carousel-caption h2 {
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .carousel-item {
+            height: 300px;
+        }
+
+        .carousel-caption {
+            text-align: center;
+            max-width: 100%;
+            left: 10%;
+            right: 10%;
+            bottom: 5%;
+        }
+
+        .carousel-caption h2 {
+            font-size: 1.75rem;
+        }
+
+        .carousel-caption p {
+            font-size: 1rem;
+        }
+
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .view-all {
+            margin-top: var(--spacing-xs);
+        }
+
+        .newsletter-container {
+            text-align: center;
+        }
+
+        .newsletter-form {
+            margin-top: var(--spacing-lg);
+        }
+
+        .category-banner.large {
+            height: 250px;
+            margin-bottom: var(--spacing-md);
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        .carousel-item {
+            height: 250px;
+        }
+
+        .carousel-caption h2 {
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+        }
+
+        .product-image {
+            height: 180px;
+        }
+    }
+</style>
+<body>
+    <header class="sticky-top">
+
+        <div class="logo-bar">
+            <div class="container d-flex justify-content-between align-items-center py-2">
+                <a href="/" class="logo-container">
+                    <img src="img/logo.png" alt="NeoTec Systems Logo" class="logo-img">
+                    <h1 class="logo-text">NeoTec<span>Systems</span></h1>
+                </a>
+                <div class="d-flex align-items-center">
+
+                    <div th:if="${session.usuarioLogueado != null}" class="welcome-message d-none d-md-block">
+                        <p>Bienvenido, <span th:text="${session.usuarioLogueado.usuario}" class="user-name"></span></p>
+                    </div>
+                    <div class="quick-actions ms-3">
+                        <a href="#" class="action-icon"><i class="fas fa-search"></i></a>
+                        <a href="#" class="action-icon"><i class="fas fa-shopping-cart"></i></a>
+                        <a href="#" class="action-icon"><i class="fas fa-user"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                    aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarMain">
+
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" aria-current="page">
+                                <i class="fas fa-home"></i> Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-laptop"></i> Laptops
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-desktop"></i> PC y Monitores
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-microchip"></i> Componentes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-keyboard"></i> Periféricos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-headset"></i> Soporte
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item" th:if="${session.usuarioLogueado == null}">
+                            <a class="nav-link" href="/login">
+                                <i class="fas fa-sign-in-alt"></i> Ingresar
+                            </a>
+                        </li>
+                        <li class="nav-item" th:if="${session.usuarioLogueado != null}">
+                            <a class="nav-link" href="/logout">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div th:if="${session.usuarioLogueado != null}" class="welcome-message-mobile d-block d-md-none">
+                    <p>Bienvenido, <span th:text="${session.usuarioLogueado.usuario}" class="user-name"></span></p>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <section class="hero-section">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/img1.jpg" class="d-block w-100" alt="Featured technology">
+                    <div class="carousel-caption">
+                        <h2>Tecnología de Vanguardia</h2>
+                        <p>Descubre las últimas innovaciones tecnológicas</p>
+                        <a href="#" class="btn btn-primary">Ver Más</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/img2.jpg" class="d-block w-100" alt="High-performance components">
+                    <div class="carousel-caption">
+                        <h2>Componentes de Alto Rendimiento</h2>
+                        <p>Potencia tu equipo con lo mejor del mercado</p>
+                        <a href="#" class="btn btn-primary">Explorar</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/img3.jpg" class="d-block w-100" alt="Gaming solutions">
+                    <div class="carousel-caption">
+                        <h2>Soluciones Gaming</h2>
+                        <p>Equípate para la mejor experiencia de juego</p>
+                        <a href="#" class="btn btn-primary">Descubrir</a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+
+    <section class="category-nav">
+        <div class="container">
+            <div class="category-wrapper">
+                <a href="#" class="category-item">
+                    <i class="fas fa-laptop"></i>
+                    <span>Laptops</span>
+                </a>
+                <a href="#" class="category-item">
+                    <i class="fas fa-desktop"></i>
+                    <span>Monitores</span>
+                </a>
+                <a href="#" class="category-item">
+                    <i class="fas fa-microchip"></i>
+                    <span>Componentes</span>
+                </a>
+                <a href="#" class="category-item">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Gaming</span>
+                </a>
+                <a href="#" class="category-item">
+                    <i class="fas fa-hdd"></i>
+                    <span>Almacenamiento</span>
+                </a>
+                <a href="#" class="category-item">
+                    <i class="fas fa-keyboard"></i>
+                    <span>Periféricos</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuevos Productos</h2>
+                <a href="#" class="view-all">Ver todos <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                <!-- Product 1 -->
+                <div class="col">
+                    <div class="product-card">
+                        <div class="product-badge">Nuevo</div>
+                        <div class="product-image">
+                            <img src="/img/LAPTOP.webp" alt="Laptop Dell Core i7">
+                            <div class="product-actions">
+                                <button class="btn-action"><i class="fas fa-heart"></i></button>
+                                <button class="btn-action"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn-action"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Laptop Dell Core i7</h5>
+                            <p class="product-description">Pantalla 15.6", RAM 8GB, SSD 512GB.</p>
+                            <div class="product-meta">
+                                <p class="product-price">$624.00</p>
+                                <p class="product-stock">Stock: 3 unidades</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="product-card">
+                        <div class="product-badge">Nuevo</div>
+                        <div class="product-image">
+                            <img src="/img/ram.webp" alt="Memoria Corsair 32GB">
+                            <div class="product-actions">
+                                <button class="btn-action"><i class="fas fa-heart"></i></button>
+                                <button class="btn-action"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn-action"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Memoria Corsair 32GB</h5>
+                            <p class="product-description">DDR5 5600Mhz, Dual Channel.</p>
+                            <div class="product-meta">
+                                <p class="product-price">$124.50</p>
+                                <p class="product-stock">Stock: 4 unidades</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="/img/power.webp" alt="Fuente de Poder">
+                            <div class="product-actions">
+                                <button class="btn-action"><i class="fas fa-heart"></i></button>
+                                <button class="btn-action"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn-action"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Fuente de Poder</h5>
+                            <p class="product-description">850W, 80 Plus Gold.</p>
+                            <div class="product-meta">
+                                <p class="product-price">$129.50</p>
+                                <p class="product-stock">Stock: 10 unidades</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="product-card">
+                        <div class="product-badge bg-success">Oferta</div>
+                        <div class="product-image">
+                            <img src="/img/monitor.webp" alt="Monitor Xiaomi 23.8">
+                            <div class="product-actions">
+                                <button class="btn-action"><i class="fas fa-heart"></i></button>
+                                <button class="btn-action"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn-action"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Monitor Xiaomi 23.8"</h5>
+                            <p class="product-description">Full HD, Frecuencia 180Hz.</p>
+                            <div class="product-meta">
+                                <p class="product-price">$124.00</p>
+                                <p class="product-stock">Stock: 6 unidades</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="/img/case.webp" alt="Case Cooler Master">
+                            <div class="product-actions">
+                                <button class="btn-action"><i class="fas fa-heart"></i></button>
+                                <button class="btn-action"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn-action"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Case Cooler Master Masterbox 520</h5>
+                            <p class="product-description">3 Ventiladores, Led Argb, Blanco</p>
+                            <div class="product-meta">
+                                <p class="product-price">$94.50</p>
+                                <p class="product-stock">Stock: 2 unidades</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="/img/pad.webp" alt="Teclado Pad Tartarus Pro">
+                            <div class="product-actions">
+                                <button class="btn-action"><i class="fas fa-heart"></i></button>
+                                <button class="btn-action"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn-action"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Teclado Pad Tartarus Pro</h5>
+                            <p class="product-description">Teclas Programables</p>
+                            <div class="product-meta">
+                                <p class="product-price">$95.50</p>
+                                <p class="product-stock">Stock: 5 unidades</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="product-card">
+                        <div class="product-badge">Premium</div>
+                        <div class="product-image">
+                            <img src="/img/lap.webp" alt="Laptop Hp Core I7">
+                            <div class="product-actions">
+                                <button class="btn-action"><i class="fas fa-heart"></i></button>
+                                <button class="btn-action"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn-action"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Laptop Hp Core I7-14650hx</h5>
+                            <p class="product-description">4060 8gb, Win11, Meteor Silver, 13gen.</p>
+                            <div class="product-meta">
+                                <p class="product-price">$1463.00</p>
+                                <p class="product-stock">Stock: 2 unidades</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="product-card">
+                        <div class="product-badge bg-warning">Último</div>
+                        <div class="product-image">
+                            <img src="/img/mother.webp" alt="Placa Madre Gigabyte">
+                            <div class="product-actions">
+                                <button class="btn-action"><i class="fas fa-heart"></i></button>
+                                <button class="btn-action"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn-action"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Placa Madre Gigabyte X870</h5>
+                            <p class="product-description">Ram Dddr5 Buss 8200oc Mtz, Wifi 7</p>
+                            <div class="product-meta">
+                                <p class="product-price">$349.00</p>
+                                <p class="product-stock">Stock: 1 unidad</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="text-center mt-4 d-md-none">
+                <a href="#" class="btn btn-outline-primary">Ver Todos los Productos</a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="featured-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Categorías Destacadas</h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="category-banner large">
+                        <img src="/img/4060.webp" alt="Graphics Cards">
+                        <div class="category-content">
+                            <h3>Tarjetas Gráficas</h3>
+                            <p>Las mejores GPU para gaming y diseño</p>
+                            <a href="#" class="btn btn-light">Explorar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="category-banner medium">
+                                <img src="/img/mouse.webp" alt="Gaming Peripherals">
+                                <div class="category-content">
+                                    <h3>Periféricos Gaming</h3>
+                                    <a href="#" class="btn btn-sm btn-light">Ver Más</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="category-banner small">
+                                <img src="/img/ram.webp" alt="Memory">
+                                <div class="category-content">
+                                    <h4>Memoria</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="category-banner small">
+                                <img src="/img/power.webp" alt="Power Supplies">
+                                <div class="category-content">
+                                    <h4>Fuentes</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h3>Suscríbete a nuestro boletín</h3>
+                        <p>Recibe las últimas novedades y ofertas exclusivas directamente en tu correo.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <form class="newsletter-form">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Tu correo electrónico"
+                                    aria-label="Email address">
+                                <button class="btn btn-primary" type="submit">Suscribirse</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+
+        <div class="footer-content">
+            <div class="container py-5">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="footer-brand mb-3">
+                            <img src="img/logo.png" alt="NeoTec Systems Logo" class="footer-logo">
+                            <h3>NeoTec<span>Systems</span></h3>
+                        </div>
+                        <p class="footer-description">Ofrecemos los mejores productos tecnológicos al mejor precio.
+                            Nuestra misión es hacer la tecnología accesible para todos.</p>
+                        <div class="footer-social">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+               
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <h4 class="footer-title">Navegación</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Inicio</a></li>
+                            <li><a href="#">Productos</a></li>
+                            <li><a href="#">Ofertas</a></li>
+                            <li><a href="#">Nuevos Lanzamientos</a></li>
+                            <li><a href="#">Soporte</a></li>
+                        </ul>
+                    </div>
+
+   
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <h4 class="footer-title">Categorías</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Laptops</a></li>
+                            <li><a href="#">Monitores</a></li>
+                            <li><a href="#">Componentes PC</a></li>
+                            <li><a href="#">Periféricos</a></li>
+                            <li><a href="#">Accesorios</a></li>
+                        </ul>
+                    </div>
+
+            
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <h4 class="footer-title">Ayuda</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Preguntas Frecuentes</a></li>
+                            <li><a href="#">Envíos</a></li>
+                            <li><a href="#">Devoluciones</a></li>
+                            <li><a href="#">Estado de Pedido</a></li>
+                            <li><a href="#">Métodos de Pago</a></li>
+                        </ul>
+                    </div>
+
+           
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <h4 class="footer-title">Contacto</h4>
+                        <ul class="footer-contact">
+                            <li><i class="fas fa-map-marker-alt"></i> Av. Tecnología 1234, Lima</li>
+                            <li><i class="fas fa-phone"></i> (01) 123-4567</li>
+                            <li><i class="fas fa-envelope"></i> info@neotec.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright">&copy; 2025 NeoTec Systems. Todos los derechos reservados Erick falso.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-bottom-links">
+                            <a href="#">Términos y Condiciones</a>
+                            <a href="#">Privacidad</a>
+                            <a href="#">Cookies</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            /* Footer Styles */
+            .footer-content {
+                background-color: var(--dark);
+                color: rgba(255, 255, 255, 0.7);
+            }
+
+            .footer-brand {
+                display: flex;
+                align-items: center;
+            }
+
+            .footer-logo {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+
+            .footer-brand h3 {
+                color: white;
+                font-weight: 700;
+                margin: 0;
+                font-size: 1.5rem;
+            }
+
+            .footer-brand h3 span {
+                font-weight: 400;
+                opacity: 0.8;
+            }
+
+            .footer-description {
+                margin-bottom: 20px;
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            .footer-social {
+                display: flex;
+                gap: 15px;
+            }
+
+            .social-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
+                background-color: rgba(255, 255, 255, 0.1);
+                color: white;
+                border-radius: 50%;
+                transition: all 0.3s ease;
+            }
+
+            .social-icon:hover {
+                background-color: var(--primary);
+                transform: translateY(-3px);
+            }
+
+            .footer-title {
+                color: white;
+                font-size: 1.1rem;
+                font-weight: 600;
+                margin-bottom: 20px;
+                position: relative;
+            }
+
+            .footer-title::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 30px;
+                height: 2px;
+                background-color: var(--primary);
+            }
+
+            .footer-links {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .footer-links li {
+                margin-bottom: 10px;
+            }
+
+            .footer-links a {
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 0.9rem;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                display: inline-block;
+            }
+
+            .footer-links a:hover {
+                color: white;
+                transform: translateX(5px);
+            }
+
+            .footer-contact {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .footer-contact li {
+                margin-bottom: 15px;
+                font-size: 0.9rem;
+                display: flex;
+                align-items: flex-start;
+            }
+
+            .footer-contact li i {
+                margin-right: 10px;
+                color: var(--primary);
+            }
+
+            .footer-bottom {
+                background-color: rgba(0, 0, 0, 0.2);
+                padding: 15px 0;
+                font-size: 0.85rem;
+            }
+
+            .copyright {
+                margin: 0;
+            }
+
+            .footer-bottom-links {
+                display: flex;
+                justify-content: flex-end;
+                gap: 20px;
+            }
+
+            .footer-bottom-links a {
+                color: rgba(255, 255, 255, 0.7);
+                text-decoration: none;
+            }
+
+            .footer-bottom-links a:hover {
+                color: white;
+            }
+
+            @media (max-width: 767.98px) {
+                .footer-bottom-links {
+                    justify-content: center;
+                    margin-top: 10px;
+                }
+
+                .copyright {
+                    text-align: center;
+                }
+            }
+        </style>
+    </footer>
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Back to Top Button
+            const backToTopButton = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+
+            backToTopButton.addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Product Card Animations
+            const productCards = document.querySelectorAll('.product-card');
+
+            productCards.forEach(card => {
+                // Add hover animations
+                card.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = 'var(--shadow)';
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'var(--shadow-sm)';
+                });
+
+                // Action button interactions
+                const actionButtons = card.querySelectorAll('.btn-action');
+
+                actionButtons.forEach(button => {
+                    button.addEventListener('click', function (e) {
+                        e.preventDefault();
+
+                        // Create a ripple effect
+                        let ripple = document.createElement('span');
+                        ripple.classList.add('ripple');
+                        button.appendChild(ripple);
+
+                        // Get position
+                        let rect = button.getBoundingClientRect();
+
+                        // Set position and dimensions
+                        ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
+                        ripple.style.left = e.clientX - rect.left - ripple.offsetWidth / 2 + 'px';
+                        ripple.style.top = e.clientY - rect.top - ripple.offsetHeight / 2 + 'px';
+
+                        // Remove ripple after animation
+                        setTimeout(() => {
+                            ripple.remove();
+                        }, 600);
+
+                        // Simulate action feedback
+                        const icon = button.querySelector('i');
+                        const originalClass = icon.className;
+
+                        // Change icon to indicate action in progress
+                        icon.className = 'fas fa-spinner fa-spin';
+
+                        // Simulate action completion
+                        setTimeout(() => {
+                            icon.className = 'fas fa-check';
+
+                            // Reset icon after a delay
+                            setTimeout(() => {
+                                icon.className = originalClass;
+                            }, 1000);
+                        }, 800);
+                    });
+                });
+            });
+
+            // Carousel Enhancements
+            const carousel = document.getElementById('heroCarousel');
+            if (carousel) {
+                // Add swipe support for mobile
+                let touchStartX = 0;
+                let touchEndX = 0;
+
+                carousel.addEventListener('touchstart', function (e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, false);
+
+                carousel.addEventListener('touchend', function (e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, false);
+
+                function handleSwipe() {
+                    const swipeThreshold = 50;
+
+                    if (touchEndX < touchStartX - swipeThreshold) {
+                        // Swipe left - next slide
+                        const nextButton = carousel.querySelector('.carousel-control-next');
+                        nextButton.click();
+                    }
+
+                    if (touchEndX > touchStartX + swipeThreshold) {
+                        // Swipe right - previous slide
+                        const prevButton = carousel.querySelector('.carousel-control-prev');
+                        prevButton.click();
+                    }
+                }
+
+                // Pause carousel on hover
+                carousel.addEventListener('mouseenter', function () {
+                    bootstrap.Carousel.getInstance(carousel).pause();
+                });
+
+                carousel.addEventListener('mouseleave', function () {
+                    bootstrap.Carousel.getInstance(carousel).cycle();
+                });
+            }
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+
+                    if (targetId === '#') return;
+
+                    e.preventDefault();
+
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80, // Offset for navbar
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Navbar scroll behavior
+            const header = document.querySelector('header');
+
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Simple cart functionality (placeholder)
+            const cartButtons = document.querySelectorAll('.btn-action:nth-child(2)');
+            let cartCount = 0;
+
+            cartButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    cartCount++;
+
+                    // Update cart icon if it exists
+                    const cartIcon = document.querySelector('.action-icon i.fa-shopping-cart');
+                    if (cartIcon) {
+                        // Create or update badge
+                        let badge = document.querySelector('.cart-badge');
+
+                        if (!badge) {
+                            badge = document.createElement('span');
+                            badge.classList.add('cart-badge');
+                            cartIcon.parentElement.appendChild(badge);
+                        }
+
+                        badge.textContent = cartCount;
+                        badge.style.display = cartCount > 0 ? 'block' : 'none';
+
+                        // Add animation
+                        badge.classList.add('pulse');
+                        setTimeout(() => {
+                            badge.classList.remove('pulse');
+                        }, 500);
+                    }
+                });
+            });
+
+            // Add CSS for cart badge
+            const style = document.createElement('style');
+            style.textContent = `
+        .action-icon {
+            position: relative;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--danger);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .pulse {
+            animation: pulse-animation 0.5s;
+        }
+        
+        @keyframes pulse-animation {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .ripple {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        header.scrolled .navbar {
+            box-shadow: var(--shadow);
+        }
+    `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+
+</html>
